@@ -1,4 +1,8 @@
+#define BLYNK_TEMPLATE_ID "TMPL50tqVtMOD"
+#define BLYNK_TEMPLATE_NAME "TP05"
+#define BLYNK_AUTH_TOKEN "_CTMEaNoUcOlmPWbtNMxcqCoa-ASjeIR"
 #define BLYNK_PRINT Serial
+
 
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
@@ -8,11 +12,8 @@
 
 #define SEALEVELPRESSURE_HPA (1013.25)
 
-#define BLYNK_TEMPLATE_ID "TMPL50tqVtMOD"
-#define BLYNK_TEMPLATE_NAME "TP05"
-#define BLYNK_AUTH_TOKEN "_CTMEaNoUcOlmPWbtNMxcqCoa-ASjeIR"
 
-char auth[] = BLYNK_AUTH_TOKEN;
+
 char ssid[] = "Galaxy A13B7E0";
 char pass[] = "txeh8505";
 
@@ -50,7 +51,7 @@ void readSensor() {
 
 void setup() {
   Serial.begin(115200);
-  Blynk.begin(auth, ssid, pass);
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
 
   unsigned status = bme.begin(0x76); // Adresse I2C par défaut du BME280
   if (!status) {
