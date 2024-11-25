@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL50tqVtMOD"
-#define BLYNK_TEMPLATE_NAME "TP05"
-#define BLYNK_AUTH_TOKEN "_CTMEaNoUcOlmPWbtNMxcqCoa-ASjeIR"
+#define BLYNK_TEMPLATE_ID "TMPL5037QLVnF"
+#define BLYNK_TEMPLATE_NAME "uwu"
+#define BLYNK_AUTH_TOKEN "izwoM5CCikaAlmDQGJ2MBbuyXl4XeUiH"
 #define BLYNK_PRINT Serial
 
 
@@ -23,14 +23,15 @@ Ticker timer;
 
 void readSensor() {
   float temperature = bme.readTemperature();
+  /*
   float pressure = bme.readPressure() / 100.0F;
   float altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
   float humidity = bme.readHumidity();
-
+*/
   Serial.print("Temperature = ");
   Serial.print(temperature);
   Serial.println(" °C");
-
+/*
   Serial.print("Pressure = ");
   Serial.print(pressure);
   Serial.println(" hPa");
@@ -42,16 +43,16 @@ void readSensor() {
   Serial.print("Humidity = ");
   Serial.print(humidity);
   Serial.println(" %");
-
-  Blynk.virtualWrite(V1, temperature);
-  Blynk.virtualWrite(V2, pressure);
-  Blynk.virtualWrite(V3, altitude);
-  Blynk.virtualWrite(V4, humidity);
+*/
+  //Blynk.virtualWrite(V1, temperature);
+  //Blynk.virtualWrite(V2, pressure);
+  //Blynk.virtualWrite(V3, altitude);
+  //Blynk.virtualWrite(V4, humidity);
 }
 
 void setup() {
   Serial.begin(115200);
-  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+  //Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
 
   unsigned status = bme.begin(0x76); // Adresse I2C par défaut du BME280
   if (!status) {
@@ -66,5 +67,5 @@ void setup() {
 }
 
 void loop() {
-  Blynk.run();
+ // Blynk.run();
 }
