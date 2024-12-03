@@ -37,7 +37,7 @@ void readSensor() {
 
   // Envoi des données aux noeuds virtuels
   Blynk.virtualWrite(V1, temperature);
-  Blynk.virtualWrite(V2, pressure);
+  Blynk.virtualWrite(V0, pressure);
   Blynk.virtualWrite(V3, humidity);
 }
 
