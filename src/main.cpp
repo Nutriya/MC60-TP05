@@ -3,7 +3,6 @@
 #define BLYNK_AUTH_TOKEN "izwoM5CCikaAlmDQGJ2MBbuyXl4XeUiH"
 #define BLYNK_PRINT Serial
 
-
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 #include <Adafruit_Sensor.h>
@@ -11,8 +10,6 @@
 #include <Ticker.h>
 
 #define SEALEVELPRESSURE_HPA (1013.25)
-
-
 
 char ssid[] = "Galaxy A13B7E0";
 char pass[] = "txeh8505";
@@ -23,36 +20,18 @@ Ticker timer;
 
 void readSensor() {
   float temperature = bme.readTemperature();
-  /*
-  float pressure = bme.readPressure() / 100.0F;
-  float altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
-  float humidity = bme.readHumidity();
-*/
+
   Serial.print("Temperature = ");
   Serial.print(temperature);
   Serial.println(" °C");
-/*
-  Serial.print("Pressure = ");
-  Serial.print(pressure);
-  Serial.println(" hPa");
 
-  Serial.print("Approx. Altitude = ");
-  Serial.print(altitude);
-  Serial.println(" m");
-
-  Serial.print("Humidity = ");
-  Serial.print(humidity);
-  Serial.println(" %");
-*/
-  //Blynk.virtualWrite(V1, temperature);
-  //Blynk.virtualWrite(V2, pressure);
-  //Blynk.virtualWrite(V3, altitude);
-  //Blynk.virtualWrite(V4, humidity);
+  // Envoi de la température au noeud V1
+  Blynk.virtualWrite(V1, temperature);
 }
 
 void setup() {
   Serial.begin(115200);
-  //Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
 
   unsigned status = bme.begin(0x76); // Adresse I2C par défaut du BME280
   if (!status) {
@@ -67,5 +46,5 @@ void setup() {
 }
 
 void loop() {
- // Blynk.run();
+  Blynk.run();
 }
