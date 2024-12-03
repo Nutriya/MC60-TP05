@@ -20,13 +20,25 @@ Ticker timer;
 
 void readSensor() {
   float temperature = bme.readTemperature();
+  float pressure = bme.readPressure() / 100.0F; // Convertir en hPa
+  float humidity = bme.readHumidity();
 
   Serial.print("Temperature = ");
   Serial.print(temperature);
   Serial.println(" °C");
 
-  // Envoi de la température au noeud V1
+  Serial.print("Pressure = ");
+  Serial.print(pressure);
+  Serial.println(" hPa");
+
+  Serial.print("Humidity = ");
+  Serial.print(humidity);
+  Serial.println(" %\n");
+
+  // Envoi des données aux noeuds virtuels
   Blynk.virtualWrite(V1, temperature);
+  Blynk.virtualWrite(V2, pressure);
+  Blynk.virtualWrite(V3, humidity);
 }
 
 void setup() {
